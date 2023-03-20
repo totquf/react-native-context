@@ -1,5 +1,5 @@
 import { View, Text } from "react-native";
-import User from "./src/Components/User";
+import UserProvider from "./src/Components/User";
 import styled from "styled-components";
 import UserContext from "./src/Context/User";
 
@@ -12,10 +12,16 @@ const Container = styled.View`
 
 export default function App() {
   return (
-    <UserContext.Provider value={{ name: '김서경' }}>
+
+    //UserProvider가 User를 감싸고 있음 -> User에 값 전달
+    //(UserProvider = UserContext.Provider)
+
+    // = User에서 UserProvider의 value를 받아 사용
+    //이때 UserProvider내부에서 value를 전달하므로 따로 value설정필요x
+    <UserProvider>
       <Container>
-        <User/>
+        <User/> 
       </Container>  
-    </UserContext.Provider>
+    </UserProvider>
   );
 }

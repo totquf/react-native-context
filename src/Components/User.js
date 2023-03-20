@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import UserContext from "../Context/User";
+import { UserConsumer } from "../Context/User";
 
 const StyledText = styled.Text`
     font-size: 24px;
@@ -9,9 +9,12 @@ const StyledText = styled.Text`
 
 const User = () => {
     return (
-        <UserContext.Consumer>
-            {value => <StyledText>이름 : {value.name}</StyledText>}
-        </UserContext.Consumer>
+        //UserConsumer = UserContext.Comsumer
+        //UserProvider에서 값 받아서 사용
+        //value = { user: { name }, dispatch: setName }
+        <UserConsumer> 
+            {({ user }) => <StyledText>이름 : { user.name }</StyledText>}
+        </UserConsumer>
     )
 }
 
